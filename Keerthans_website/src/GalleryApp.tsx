@@ -30,7 +30,7 @@ export default function GalleryApp() {
   }, [selected])
 
   useEffect(() => {
-    fetch('/api/testimonials')
+    fetch(`${import.meta.env.BASE_URL}api/testimonials`)
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Unable to load testimonials')))
       .then((data) => setTestimonials(Array.isArray(data.testimonials) ? data.testimonials : []))
       .catch(() => setTestimonials([]))
@@ -53,7 +53,7 @@ export default function GalleryApp() {
     event.preventDefault()
     setFeedbackStatus('Sending...')
     try {
-      const response = await fetch('/api/testimonials', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(feedback) })
+      const response = await fetch(`${import.meta.env.BASE_URL}api/testimonials`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(feedback) })
       if (!response.ok) throw new Error('Unable to submit feedback')
       const data = await response.json()
       setTestimonials((current) => [data.testimonial, ...current])
