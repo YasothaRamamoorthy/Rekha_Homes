@@ -69,7 +69,7 @@ export default function GalleryApp() {
     setApplicationStatus('Sending application...')
     const formData = new FormData(event.currentTarget)
     try {
-      const response = await fetch('/api/apply', { method: 'POST', body: formData })
+      const response = await fetch(`${import.meta.env.BASE_URL}api/apply`, { method: 'POST', body: formData })
       if (!response.ok) throw new Error('Unable to submit application')
       setApplicationStatus('Application submitted successfully.')
       event.currentTarget.reset()
