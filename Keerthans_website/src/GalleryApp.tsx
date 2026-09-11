@@ -3,6 +3,9 @@ import { PROJECTS, type ProjectImage } from './projects'
 
 const ALL_IMAGES = PROJECTS.flatMap((project) => project.images)
 
+// REPLACE THIS URL with your deployed Google Apps Script URL
+const GOOGLE_SHEET_API = 'https://script.google.com/macros/s/AKfycbzDSi7oqNniAuFUZu5nY_SSZt-p2LE_wSnYdvByUW86mIctHsY8b8T_YcdQH5jtdEyI/exec';
+
 const formatFeedbackDate = (createdAt?: string) => {
   if (!createdAt) return ''
   const date = new Date(createdAt)
@@ -30,7 +33,7 @@ export default function GalleryApp() {
   }, [selected])
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}api/testimonials`)
+    fetch(GOOGLE_SHEET_API)
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Unable to load testimonials')))
       .then((data) => setTestimonials(Array.isArray(data.testimonials) ? data.testimonials : []))
       .catch(() => setTestimonials([]))
@@ -53,19 +56,19 @@ export default function GalleryApp() {
     event.preventDefault()
     setFeedbackStatus('Sending...')
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}api/testimonials`, { 
+      const response = await fetch(GOOGLE_SHEET_API, { 
         method: 'POST', 
+        mode: 'no-cors', // Required for Google Script POST requests
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(feedback) 
       })
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.error || 'Unable to submit feedback')
       
-      setTestimonials((current) => [data.testimonial, ...current])
+      // Note: with 'no-cors', we cannot read the response body, 
+      // but the data will be sent to the sheet.
       setFeedback({ author: '', message: '' })
       setFeedbackStatus('Thank you for sharing your experience.')
     } catch (error) {
-      setFeedbackStatus(error instanceof Error ? error.message : 'We could not send your feedback. Please try again.')
+      setFeedbackStatus('We could not send your feedback. Please try again.')
     }
   }
 
