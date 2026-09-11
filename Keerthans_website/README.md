@@ -21,6 +21,8 @@ Then open the local URL shown by Vite.
 
 The default frontend URL is `http://localhost:5173/`; the API runs on `http://localhost:5174/`.
 
+GitHub Pages deploys from GitHub Actions. For this repository the deployed URL is `https://yasotharamamoorthy.github.io/Websites/`. If the repository is renamed to `Rehka_Homes`, the workflow automatically uses the matching `/Rehka_Homes/` base path.
+
 ## Build
 
 ```bash

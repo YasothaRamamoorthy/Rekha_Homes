@@ -11,7 +11,7 @@ export interface Project {
 }
 
 const asset = (filename: string, aspectRatio: ProjectImage['aspectRatio'] = 'portrait'): ProjectImage => ({
-  url: `/assets/${filename}`,
+  url: `${import.meta.env.BASE_URL}assets/${filename}`,
   alt: 'RehkaHomes project photography',
   aspectRatio,
 });

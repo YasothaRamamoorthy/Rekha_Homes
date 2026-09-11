@@ -97,7 +97,7 @@ export default function GalleryApp() {
 
       {page === 'home' ? (
         <>
-          <section className="gallery-hero">
+          <section className="gallery-hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(18, 17, 15, .86), rgba(18, 17, 15, .48)), url('${import.meta.env.BASE_URL}assets/image-13.jpeg')` }}>
             <p className="gallery-kicker">REHKAHOMES / PORTFOLIO</p>
             <h1>Spaces with a sense of place.</h1>
             <p className="gallery-lede">A collection of homes and spaces brought to life by RehkaHomes.</p>
