@@ -1,13 +1,13 @@
-# Keerthans Building Showcase
+# RehkaHomes Gallery
 
-A React website that highlights building projects, architecture services, and construction features.
+A React/Vite portfolio for RehkaHomes with a rotating homepage image, a full horizontal gallery, testimonials, feedback submission, and team applications.
 
 ## Setup
 
 Install dependencies:
 
 ```bash
-cd /Users/yaso/Desktop/vscode/Keerthans_website
+cd /Users/yaso/Documents/GitHub/vscode/Keerthans_website
 npm install
 ```
 
@@ -19,19 +19,25 @@ npm run dev
 
 Then open the local URL shown by Vite.
 
+The default frontend URL is `http://localhost:5173/`; the API runs on `http://localhost:5174/`.
+
 ## Build
 
 ```bash
 npm run build
 ```
 
-## Admin Image Upload
+## Project Structure
 
-An admin UI is available at `/admin` for uploading images used in the hover galleries.
+- `src/GalleryApp.tsx` - active homepage, gallery, About, Contact, testimonials, feedback, and careers views
+- `src/projects.ts` - editable gallery data and local image paths
+- `src/index.css` - gallery and responsive styles
+- `src/main.tsx` - React entry point
+- `public/assets/` - gallery photography served by Vite
+- `server.js` - API for testimonials, image uploads, and applications
+- `data/testimonials.json` - stored feedback entries
 
-- Default password: `admin123` (change in `src/Admin.jsx` for production)
-- Uploaded images are stored in the project at `public/uploads/<category>/` so they persist across restarts.
-- The upload API server runs on port `5174` and is proxied from the frontend dev server.
+The homepage shows one rotating image from the full gallery. The Our Work view presents all gallery images in one continuous row. Add new images to `public/assets/` and register them in `src/projects.ts`.
 
 Run the frontend and backend together with:
 
