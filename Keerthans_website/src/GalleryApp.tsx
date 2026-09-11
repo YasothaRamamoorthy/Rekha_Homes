@@ -30,7 +30,7 @@ export default function GalleryApp() {
   }, [selected])
 
   useEffect(() => {
-    fetch('/api/testimonials')
+    fetch(`${import.meta.env.BASE_URL}api/testimonials`)
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Unable to load testimonials')))
       .then((data) => setTestimonials(Array.isArray(data.testimonials) ? data.testimonials : []))
       .catch(() => setTestimonials([]))
@@ -53,7 +53,7 @@ export default function GalleryApp() {
     event.preventDefault()
     setFeedbackStatus('Sending...')
     try {
-      const response = await fetch('/api/testimonials', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(feedback) })
+      const response = await fetch(`${import.meta.env.BASE_URL}api/testimonials`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(feedback) })
       if (!response.ok) throw new Error('Unable to submit feedback')
       const data = await response.json()
       setTestimonials((current) => [data.testimonial, ...current])
@@ -113,11 +113,11 @@ export default function GalleryApp() {
             </div>
             <div className="about-visuals" aria-label="From construction to finished space">
               <figure className="about-image about-image-process">
-                <img src="/assets/image-07.jpeg" alt="RehkaHomes construction in progress" loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}assets/image-07.jpeg`} alt="RehkaHomes construction in progress" loading="lazy" />
                 <figcaption><span>01</span> In progress</figcaption>
               </figure>
               <figure className="about-image about-image-result">
-                <img src="/assets/image-28.jpeg" alt="RehkaHomes completed space" loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}assets/image-28.jpeg`} alt="RehkaHomes completed space" loading="lazy" />
                 <figcaption><span>02</span> Final result</figcaption>
               </figure>
               <div className="about-visual-line" aria-hidden="true">→</div>
