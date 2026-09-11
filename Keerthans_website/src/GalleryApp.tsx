@@ -53,14 +53,19 @@ export default function GalleryApp() {
     event.preventDefault()
     setFeedbackStatus('Sending...')
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}api/testimonials`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(feedback) })
-      if (!response.ok) throw new Error('Unable to submit feedback')
+      const response = await fetch(`${import.meta.env.BASE_URL}api/testimonials`, { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(feedback) 
+      })
       const data = await response.json()
+      if (!response.ok) throw new Error(data.error || 'Unable to submit feedback')
+      
       setTestimonials((current) => [data.testimonial, ...current])
       setFeedback({ author: '', message: '' })
       setFeedbackStatus('Thank you for sharing your experience.')
-    } catch {
-      setFeedbackStatus('We could not send your feedback. Please try again.')
+    } catch (error) {
+      setFeedbackStatus(error instanceof Error ? error.message : 'We could not send your feedback. Please try again.')
     }
   }
 
