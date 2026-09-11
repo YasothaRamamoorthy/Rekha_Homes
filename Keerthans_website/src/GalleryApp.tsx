@@ -53,6 +53,20 @@ export default function GalleryApp() {
     }, 24)
     return () => window.clearInterval(interval)
   }, [page])
+  
+  // Add a reference for the testimonials section to allow auto-scrolling it too
+  const testimonialsTrackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      const track = testimonialsTrackRef.current
+      if (track && track.scrollWidth > track.clientWidth) {
+        track.scrollLeft += 1
+        if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) track.scrollLeft = 0
+      }
+    }, 24)
+    return () => window.clearInterval(interval)
+  }, [page])
 
   const openProject = (images: ProjectImage[], index = 0) => setSelected({ images, index })
 
@@ -156,8 +170,8 @@ export default function GalleryApp() {
               <p className="gallery-kicker">CLIENT VOICES</p>
               <h2>What clients say.</h2>
             </div>
-            <div className="testimonials-list">
-              {testimonials.length ? testimonials.slice(0, 3).map((testimonial, index) => (
+            <div className="testimonials-list" ref={testimonialsTrackRef}>
+              {testimonials.length ? testimonials.map((testimonial, index) => (
                 <blockquote key={`${testimonial.author}-${index}`}>
                   “{testimonial.message}”
                   <cite>{testimonial.author}{formatFeedbackDate(testimonial.createdAt) ? ` · ${formatFeedbackDate(testimonial.createdAt)}` : ''}</cite>
