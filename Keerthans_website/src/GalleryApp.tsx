@@ -32,11 +32,15 @@ export default function GalleryApp() {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [selected])
 
-  useEffect(() => {
+  const loadTestimonials = () => {
     fetch(GOOGLE_SHEET_API)
       .then((response) => response.ok ? response.json() : Promise.reject(new Error('Unable to load testimonials')))
       .then((data) => setTestimonials(Array.isArray(data.testimonials) ? data.testimonials : []))
       .catch(() => setTestimonials([]))
+  }
+
+  useEffect(() => {
+    loadTestimonials()
   }, [])
 
   useEffect(() => {
@@ -56,17 +60,20 @@ export default function GalleryApp() {
     event.preventDefault()
     setFeedbackStatus('Sending...')
     try {
-      const response = await fetch(GOOGLE_SHEET_API, { 
+      await fetch(GOOGLE_SHEET_API, { 
         method: 'POST', 
         mode: 'no-cors', // Required for Google Script POST requests
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(feedback) 
       })
       
-      // Note: with 'no-cors', we cannot read the response body, 
-      // but the data will be sent to the sheet.
       setFeedback({ author: '', message: '' })
       setFeedbackStatus('Thank you for sharing your experience.')
+      
+      // Refresh the list from the sheet after submission
+      setTimeout(() => {
+        loadTestimonials()
+      }, 1000)
     } catch (error) {
       setFeedbackStatus('We could not send your feedback. Please try again.')
     }
