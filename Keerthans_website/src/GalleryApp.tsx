@@ -177,8 +177,8 @@ export default function GalleryApp() {
                   <cite>{testimonial.author}{formatFeedbackDate(testimonial.createdAt) ? ` · ${formatFeedbackDate(testimonial.createdAt)}` : ''}</cite>
                 </blockquote>
               )) : <p>No feedback has been shared yet.</p>}
-              <button className="feedback-cta" onClick={() => setPage('feedback')}>Share your feedback <span>→</span></button>
             </div>
+            <button className="feedback-cta" onClick={() => setPage('feedback')}>Share your feedback <span>→</span></button>
           </section>
         </>
       ) : page === 'projects' ? (
