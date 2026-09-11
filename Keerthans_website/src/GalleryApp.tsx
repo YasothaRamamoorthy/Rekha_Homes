@@ -113,11 +113,11 @@ export default function GalleryApp() {
             </div>
             <div className="about-visuals" aria-label="From construction to finished space">
               <figure className="about-image about-image-process">
-                <img src="/assets/image-07.jpeg" alt="RehkaHomes construction in progress" loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}assets/image-07.jpeg`} alt="RehkaHomes construction in progress" loading="lazy" />
                 <figcaption><span>01</span> In progress</figcaption>
               </figure>
               <figure className="about-image about-image-result">
-                <img src="/assets/image-28.jpeg" alt="RehkaHomes completed space" loading="lazy" />
+                <img src={`${import.meta.env.BASE_URL}assets/image-28.jpeg`} alt="RehkaHomes completed space" loading="lazy" />
                 <figcaption><span>02</span> Final result</figcaption>
               </figure>
               <div className="about-visual-line" aria-hidden="true">→</div>
