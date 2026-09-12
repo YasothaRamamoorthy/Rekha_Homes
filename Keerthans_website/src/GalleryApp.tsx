@@ -96,10 +96,20 @@ export default function GalleryApp() {
   const submitApplication = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setApplicationStatus('Sending application...')
-    const formData = new FormData(event.currentTarget)
+    
+    // We now use the same Google Apps Script API for applications
+    // The GAS script should be updated to handle 'action=apply'
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}api/apply`, { method: 'POST', body: formData })
-      if (!response.ok) throw new Error('Unable to submit application')
+      const formData = new FormData(event.currentTarget)
+      const data = Object.fromEntries(formData.entries())
+      
+      await fetch(`${GOOGLE_SHEET_API}?action=apply`, { 
+        method: 'POST', 
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(data) 
+      })
+      
       setApplicationStatus('Application submitted successfully.')
       event.currentTarget.reset()
     } catch {

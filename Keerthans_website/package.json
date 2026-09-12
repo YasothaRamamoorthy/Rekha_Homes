@@ -4,11 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "server": "node server.js",
-    "dev:server": "node server.js",
     "dev:client": "vite",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "npm run dev:client",
     "build": "vite build",
     "preview": "vite preview"
   },
