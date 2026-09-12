@@ -260,6 +260,57 @@ export default function GalleryApp() {
               </div>
             </div>
           </section>
+          <section className="pricing-section">
+            <div className="pricing-header">
+              <p className="gallery-kicker">OUR PRICING PLANS</p>
+              <h2>Tailored architectural and construction solutions for every budget</h2>
+            </div>
+            <div className="pricing-grid">
+              <div className="pricing-card">
+                <div className="pricing-icon">⏳</div>
+                <h3 className="plan-name">Basic Plan</h3>
+                <div className="pricing-amount">₹1,999<span>/sq.ft</span></div>
+                <div className="pricing-details">
+                  <h4>What's Included:</h4>
+                  <ul>
+                    <li>Basic 2D Floor Plan & Layout Design</li>
+                    <li>Structural Designing</li>
+                    <li>Initial Consultation & Site Assessment</li>
+                  </ul>
+                </div>
+                <button className="pricing-btn">Get Started With Plan <span>→</span></button>
+              </div>
+              <div className="pricing-card popular">
+                <div className="popular-tag">Most Popular</div>
+                <div className="pricing-icon">🏺</div>
+                <h3 className="plan-name">Standard Plan</h3>
+                <div className="pricing-amount">₹2,299<span>/sq.ft</span></div>
+                <div className="pricing-details">
+                  <h4>What's Included:</h4>
+                  <ul>
+                    <li>2D Floor Plan & Layout Design</li>
+                    <li>Structural Designing</li>
+                    <li>3D elevation design</li>
+                  </ul>
+                </div>
+                <button className="pricing-btn">Get Started With Plan <span>→</span></button>
+              </div>
+              <div className="pricing-card">
+                <div className="pricing-icon">⌛</div>
+                <h3 className="plan-name">Premium Plan</h3>
+                <div className="pricing-amount">₹2,499<span>/sq.ft</span></div>
+                <div className="pricing-details">
+                  <h4>What's Included:</h4>
+                  <ul>
+                    <li>2D Floor Plan & Layout Design</li>
+                    <li>Structural Designing</li>
+                    <li>3D elevation design</li>
+                  </ul>
+                </div>
+                <button className="pricing-btn">Get Started With Plan <span>→</span></button>
+              </div>
+            </div>
+          </section>
           <section id="testimonials" className="testimonials-section">
             <div>
               <p className="gallery-kicker">CLIENT VOICES</p>
