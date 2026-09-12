@@ -117,9 +117,9 @@ export default function GalleryApp() {
         <nav aria-label="Primary navigation">
           <button onClick={() => setPage('home')}>Home</button>
           <a href="#about">About</a>
+          <a href="#services">Our Services</a>
           <button onClick={() => setPage('projects')}>Our Work</button>
-          <button onClick={() => setPage('feedback')}>Share Feedback</button>
-          <button onClick={() => setPage('careers')}>Join Our Team</button>
+          {/* <button onClick={() => setPage('careers')}>Join Our Team</button> */}
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -163,6 +163,101 @@ export default function GalleryApp() {
                   <img src={image.url} alt={image.alt} loading="lazy" />
                 </button>
               ))}
+            </div>
+          </section>
+          <section id="services" className="services-section">
+            <div className="services-header">
+              <span className="kicker">Our Services</span>
+              <h2>Architectural and construction solutions for modern living</h2>
+            </div>
+            <div className="services-grid">
+              <div className="service-card">
+                <h3>Residential Design & Construction</h3>
+                <p>Creating bespoke homes and luxury villas with optimized layouts and sustainable modern designs.</p>
+                <img src={`${import.meta.env.BASE_URL}assets/image-01.jpeg`} alt="Residential" className="service-image" />
+              </div>
+              <div className="service-card">
+                <h3>Strategic Project Planning</h3>
+                <p>Comprehensive budgeting and timeline management to ensure a seamless transition from blueprint to building.</p>
+                <img src={`${import.meta.env.BASE_URL}assets/image-02.jpeg`} alt="Planning" className="service-image" />
+              </div>
+              <div className="service-card">
+                <h3>Commercial & Industrial Development</h3>
+                <p>Developing high-utility commercial hubs and industrial plants engineered for durability and efficiency.</p>
+                <img src={`${import.meta.env.BASE_URL}assets/image-03.jpeg`} alt="Commercial" className="service-image" />
+              </div>
+              <div className="service-card">
+                <h3>Interior Renovation & Design</h3>
+                <p>Transforming dated interiors into contemporary spaces through artistic remodeling and precision finishes.</p>
+                <img src={`${import.meta.env.BASE_URL}assets/image-04.jpeg`} alt="Renovation" className="service-image" />
+              </div>
+            </div>
+          </section>
+          <section className="philosophy-section">
+            <div className="philosophy-header">
+              <h2>The Rehka Standard</h2>
+            </div>
+            <div className="philosophy-content">
+              <div className="philosophy-item">
+                <h3>Uncompromising Integrity</h3>
+                <p>We believe a building is only as strong as the honesty of its materials. From the foundation to the final coat of paint, we use only verified, premium-grade resources.</p>
+              </div>
+              <div className="philosophy-item">
+                <h3>Architectural Empathy</h3>
+                <p>We don't just build structures; we build for the people who live in them. Every corner is designed to enhance the daily rituals and emotional well-being of the homeowner.</p>
+              </div>
+              <div className="philosophy-item">
+                <h3>Precision Engineering</h3>
+                <p>Where others see 'good enough,' we see a millimeter of difference. Our commitment to precision ensures that your home remains a timeless asset for generations.</p>
+              </div>
+            </div>
+          </section>
+          <section className="partners-banner" aria-label="Our trusted vendors">
+            <div className="partners-heading">
+              <h2>Our Trusted Vendors</h2>
+              <p>Building long-term partnerships through quality, precision, and reliability.</p>
+            </div>
+            <div className="partners-track" ref={galleryTrackRef}>
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="partners-slide">
+                  <img src="https://www.asianpaints.com/favicon.ico" alt="Asian Paints" className="partner-logo" />
+                  <img src="https://www.jaquar.com/favicon.ico" alt="Jaquar" className="partner-logo" />
+                  <img src="https://www.kajaria.com/favicon.ico" alt="Kajaria" className="partner-logo" />
+                  <img src="https://www.saint-gobain.com/favicon.ico" alt="Saint-Gobain" className="partner-logo" />
+                  <img src="https://www.ultratechcement.com/favicon.ico" alt="UltraTech Cement" className="partner-logo" />
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className="faq-section" id="faq">
+            <div className="faq-header">
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            <div className="faq-grid">
+              <div className="faq-item">
+                <h3>Do you provide a warranty on construction?</h3>
+                <p>Yes, we provide a comprehensive structural warranty that ensures your home remains safe and sound for decades.</p>
+              </div>
+              <div className="faq-item">
+                <h3>How do you handle budget overruns?</h3>
+                <p>We provide a detailed cost breakdown at the start. Any changes are discussed and approved in writing before implementation to ensure no surprises.</p>
+              </div>
+              <div className="faq-item">
+                <h3>Can you work with our own architects?</h3>
+                <p>Absolutely. We collaborate seamlessly with external architects to bring your specific vision to life with our construction expertise.</p>
+              </div>
+              <div className="faq-item">
+                <h3>How long does a typical project take?</h3>
+                <p>Timelines vary by project scale, but we provide a precise Gantt chart at the start so you can track progress in real-time.</p>
+              </div>
+              <div className="faq-item">
+                <h3>Do you handle all the government permits and approvals?</h3>
+                <p>Yes, we manage the entire legal process, from zoning approvals to occupancy certificates, ensuring a stress-free experience for the client.</p>
+              </div>
+              <div className="faq-item">
+                <h3>What makes your design approach different?</h3>
+                <p>We blend traditional craftsmanship with smart-home technology, ensuring your space is both timeless in beauty and modern in functionality.</p>
+              </div>
             </div>
           </section>
           <section id="testimonials" className="testimonials-section">
